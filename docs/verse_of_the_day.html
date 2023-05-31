@@ -35,7 +35,12 @@
             dataType: 'jsonp',
             success: function(result){
                $("#newQuote")
-                 .html(result[0].text + result[0].bookname + ' ' + result[0].chapter + ':' + result[0].verse);
+                 .html('<strong>'+
+                       result[0].bookname+
+                       ' ' + result[0].chapter +
+                       ':' + result[0].verse +
+                       '</strong> ' +
+                       result[0].text);
             }
           });
       }
