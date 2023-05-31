@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="mystyles.css">
+    <title>Verse of the day</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div>
+                <p class="text-justify text-muted" id="newQuote"><p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    (function() {
+      $(document).ready(function() {
+          getVerse();
+      });
+
+      var getVerse = function() {
+          $.ajax({
+            url: "https://labs.bible.org/api/?passage=votd&type=json&callback=myCallback&formatting=plain",
+            crossDomain: true,
+            dataType: 'jsonp',
+            success: function(result){
+               $("#newQuote")
+                 .html(result[0].text + result[0].bookname + ' ' + result[0].chapter + ':' + result[0].verse);
+            }
+          });
+      }
+    })();
+</script>
+
+</body>
+</html>
