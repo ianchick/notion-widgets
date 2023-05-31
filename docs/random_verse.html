@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div>
+                <p class="text-justify text-muted" id="newQuote"><p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div align="center">
+                <button class="btn btn-outline-dark btn-sm">New Verse</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    (function() {
+      $(document ).ready(function() {
+          getVerse();
+      });
+
+      $("button").click(function(){
+        getVerse();
+      });
+
+      var getVerse = function() {
+          $.ajax({
+            url: "https://labs.bible.org/api/?passage=random&type=json&callback=myCallback",
+            crossDomain: true,
+            dataType: 'jsonp',
+            success: function(result){
+               $("#newQuote")
+                 .html('<strong>'+
+                       result[0].bookname+
+                       ' ' + result[0].chapter +
+                       ':' + result[0].verse +
+                       '</strong> ' +
+                       result[0].text);
+            }
+          });
+      }
+    })();
+</script>
+
+</body>
+</html>
