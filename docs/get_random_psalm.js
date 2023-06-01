@@ -172,12 +172,12 @@ function getVerse(book, chapter, start_verse, end_verse) {
       if (start_verse != end_verse) {
         $("#verse_view").html(
           '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + "-" + end_verse.toString() + '</strong> ' + all_verses.join(' ') + '</br>' +
-          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT">Full Chapter</a>'
+          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT" target="_blank">Full Chapter</a>'
         );
       } else {
         $("#verse_view").html(
           '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + '</strong> ' + all_verses.join(' ') + '</br>' +
-          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT">Full Chapter</a>'
+          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT" target="_blank">Full Chapter</a>'
         );
       }
     }
