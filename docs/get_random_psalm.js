@@ -169,9 +169,15 @@ function getVerse(book, chapter, start_verse, end_verse) {
     dataType: 'jsonp',
     success: function(result){
       var all_verses = result.map(obj=>obj.verse + " " + obj.text);
-      $("#verse_view").html(
-          '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + "-" + end_verse.toString() + '</strong> ' + all_verses.join(' ')
-      );
+      if (start_verse != end_verse) {
+        $("#verse_view").html(
+            '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + "-" + end_verse.toString() + '</strong> ' + all_verses.join(' ')
+        );
+      } else {
+        $("#verse_view").html(
+          '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + '</strong> ' + all_verses.join(' ')
+        );
+      }
     }
   });
 }
