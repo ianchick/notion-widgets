@@ -171,11 +171,13 @@ function getVerse(book, chapter, start_verse, end_verse) {
       var all_verses = result.map(obj=>obj.verse + " " + obj.text);
       if (start_verse != end_verse) {
         $("#verse_view").html(
-            '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + "-" + end_verse.toString() + '</strong> ' + all_verses.join(' ')
+          '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + "-" + end_verse.toString() + '</strong> ' + all_verses.join(' ') + '</br>' +
+          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT">Full Chapter</a>'
         );
       } else {
         $("#verse_view").html(
-          '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + '</strong> ' + all_verses.join(' ')
+          '<strong>' + book + ' ' + chapter.toString() + ':' + start_verse.toString() + '</strong> ' + all_verses.join(' ') + '</br>' +
+          '<a href="https://www.biblegateway.com/passage/?search=' + book + "+" + chapter.toString() + '&version=NLT">Full Chapter</a>'
         );
       }
     }
